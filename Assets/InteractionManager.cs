@@ -7,42 +7,40 @@ public class InteractionManager : MonoBehaviour {
     private SteamVR_TrackedObject trackedObj;
     private SteamVR_Controller.Device controller { get { return SteamVR_Controller.Input((int)trackedObj.index); } }
 
+    // Line Renderer
+    private LineRenderer lineRenderer;
 
-    void Awake() {
+    void Start() {
         trackedObj = transform.parent.parent.parent.GetComponent<SteamVR_TrackedObject>();
+        lineRenderer = gameObject.GetComponent<LineRenderer>();
     } 
 
     void FixedUpdate() {
-        Debug.Log(controller.velocity);
+        //Debug.Log(controller.velocity);
 
-        Vector3 startPoint = trackedObj.transform.position;
-        Vector3 endPoint = startPoint + controller.velocity;
+        Vector3 startPoint = controller.transform.pos;
+        //startPoint.y += .3f;
 
-        Debug.DrawLine(startPoint, endPoint, Color.red); 
+       // startPoint = transform.TransformPoint(startPoint);
 
-       // Debug.DrawLine( startPoint, endPoint, Color.red);
+        Vector3 controllerVelocity = new Vector3(controller.velocity.x, controller.velocity.y, controller.velocity.z);
+        Vector3 endPoint = startPoint + controllerVelocity * 2.5f;
+
+        Vector3[] points = new Vector3[2];
+        
+        points[0] = startPoint;
+        points[1] = endPoint;
+
+        lineRenderer.SetPositions(points);
+        //Debug.DrawLine(startPoint, endPoint, Color.red); 
+
+        // Debug.DrawLine( startPoint, endPoint, Color.red);
     }
 
 
     void OnTriggerStay(Collider col) {
-        //if (device.GetTouch(SteamVR_Controller.ButtonMask.Trigger)) {
-        //    col.attachedRigidbody.isKinematic = true;
-        //    col.gameObject.transform.SetParent(this.gameObject.transform);
-        //}
 
-        //if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Trigger)) {
-        //    col.gameObject.transform.SetParent(null);
-        //    col.attachedRigidbody.isKinematic = false;
-
-        //    tossObject(col.attachedRigidbody);
-        //}
-
-        //if (device.GetPress(SteamVR_Controller.ButtonMask.Grip)) {
-        //    hitObject(col.attachedRigidbody);
-        //}
-        
-
-        if (col.name != "Floor") {
+        if (col.name != "Floor" && col.name != "Collider_Real") {
 
             //(Debug.Log("Collider: " + col.name);
             col.gameObject.transform.SetParent(null);
@@ -62,7 +60,13 @@ public class InteractionManager : MonoBehaviour {
             return;
         }
 
-        rigidbody.velocity = controller.velocity * 3 ;
+        Vector3 startPoint = transform.localPosition;
+        startPoint.y += .3f;
+        startPoint = transform.TransformPoint(startPoint);
+
+
+        Vector3 controllerVelocity = new Vector3(controller.velocity.x, controller.velocity.y + .3f, controller.velocity.z);
+        rigidbody.velocity = controllerVelocity * 2.5f;
         //rigidbody.angularVelocity = controller.angularVelocity * 3;
 
 
