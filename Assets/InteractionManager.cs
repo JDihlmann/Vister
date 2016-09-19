@@ -38,6 +38,14 @@ public class InteractionManager : MonoBehaviour {
     }
 
 
+    void OnTriggerEnter(Collider col) {
+        if(col.name == "Ball") {
+            col.transform.GetComponent<Renderer>().material.color = Color.yellow; 
+
+        }
+    }
+
+
     void OnTriggerStay(Collider col) {
 
         if (col.name != "Floor" && col.name != "Collider_Real") {

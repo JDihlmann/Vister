@@ -22,6 +22,7 @@ public class BallReseter : MonoBehaviour {
     void Reseter() {
         rgbd.velocity = new Vector3(0, 0, 0);
         rgbd.position = startPosition;
+        transform.GetComponent<Renderer>().material.color = Color.blue;
     }
     
 }
