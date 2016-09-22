@@ -21,7 +21,7 @@ public class RandomVelocity : MonoBehaviour {
 
     void SetVelocity() {
         rgbd.velocity = new Vector3(0, 0, 0);
-        rgbd.position = startPosition;
+        rgbd.MovePosition(startPosition);
     }
     
 }
