@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: d078fb4db7b2d2649a7d1312ea672b38
-timeCreated: 1474037484
+guid: 64f3ece0f27160740a0ee06c4050af6e
+timeCreated: 1474709614
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: Rotorblade
-    100002: Rounded_Tennis_Full
+    100002: Rounded_Tennis
     100004: //RootNode
     400000: Rotorblade
-    400002: Rounded_Tennis_Full
+    400002: Rounded_Tennis
     400004: //RootNode
     2300000: Rotorblade
-    2300002: Rounded_Tennis_Full
+    2300002: Rounded_Tennis
     3300000: Rotorblade
-    3300002: Rounded_Tennis_Full
-    4300000: Rotorblade
-    4300002: Rounded_Tennis_Full
+    3300002: Rounded_Tennis
+    4300000: Rounded_Tennis
+    4300002: Rotorblade
     9500000: //RootNode
   materials:
     importMaterials: 1
