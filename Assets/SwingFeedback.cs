@@ -26,8 +26,16 @@ public class SwingFeedback : MonoBehaviour {
 		// calculate airdrag with coeeficent (guessed), air density on earth (ca 1.3), the biggest area of the collider and the velocity ^ 2
 		float airDrag = 0.5f / 2 * 1.3f * Mathf.Max(racketCollider.size.x, racketCollider.size.y, racketCollider.size.z) * fakeVelocity * fakeVelocity;
 
-		float strengthPercentage = 1 - (racketForce - airDrag);
-		controller.TriggerHapticPulse((ushort)Mathf.Lerp(0, 2000, strengthPercentage));
+		float strengthPercentage = Mathf.Abs(1 - (racketForce - airDrag));
+		Debug.Log(strengthPercentage);
+
+		if (strengthPercentage >= 500)
+		{
+			controller.TriggerHapticPulse((ushort)strengthPercentage);
+		} 
+		//controller.TriggerHapticPulse((ushort)Mathf.Lerp(0, 2000, strengthPercentage));
+
+		lastPoint = transform.position;
 	}
 
 	//void OnCollisionEnter(Collision collision)
