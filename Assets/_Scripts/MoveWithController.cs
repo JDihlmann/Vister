@@ -18,7 +18,7 @@ public class MoveWithController : MonoBehaviour {
 
     void FixedUpdate() {
         if (controller == null) {
-            Debug.Log("Controller not reachable");
+            //Debug.Log("Controller not reachable");
             return;
         }
 

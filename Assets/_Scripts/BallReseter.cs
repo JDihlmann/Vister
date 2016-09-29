@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RandomVelocity : MonoBehaviour {
+public class BallReseter : MonoBehaviour {
 
 
     public Rigidbody rgbd;
